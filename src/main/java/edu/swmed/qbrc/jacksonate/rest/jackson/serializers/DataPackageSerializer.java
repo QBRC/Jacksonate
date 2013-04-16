@@ -32,7 +32,7 @@ public class DataPackageSerializer extends JsonSerializer<DataPackage> {
 		Set<Class<?>> classes = reflections.getTypesAnnotatedWith(DataPackageClass.class);
 		
 		jgen.writeStartObject();
-		jgen.writeArrayFieldStart("files");
+		jgen.writeArrayFieldStart("resources");
 		for (Class<?> annotated : classes) {
 			DataPackageClass dp = annotated.getAnnotation(DataPackageClass.class);
 			jgen.writeStartObject();
