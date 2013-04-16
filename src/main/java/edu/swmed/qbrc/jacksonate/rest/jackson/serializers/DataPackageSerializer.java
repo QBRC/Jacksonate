@@ -36,7 +36,7 @@ public class DataPackageSerializer extends JsonSerializer<DataPackage> {
 		for (Class<?> annotated : classes) {
 			DataPackageClass dp = annotated.getAnnotation(DataPackageClass.class);
 			jgen.writeStartObject();
-			jgen.writeStringField("url", dp.url());
+			jgen.writeStringField("path", dp.url().replaceAll("^/", ""));
 			jgen.writeStringField("id", annotated.getSimpleName());
 			jgen.writeObjectFieldStart("schema");
 			JacksonUtils.writeJSONSchema(annotated, jgen, reflectionFactory, restBaseUrl);
