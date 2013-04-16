@@ -34,7 +34,7 @@ public class JacksonUtils {
 					jgen.writeStringField("type", pd.getJSONType());
 					if (pd.getPropertyDescriptor().getReadMethod().isAnnotationPresent(DataPackageForeignKey.class)) {
 						DataPackageForeignKey dpfk = pd.getPropertyDescriptor().getReadMethod().getAnnotation(DataPackageForeignKey.class);
-						jgen.writeObjectFieldStart("foreign key");
+						jgen.writeObjectFieldStart("foreignkey");
 						jgen.writeStringField("pkg", restBaseUrl.getValue() + restBaseUrl.getPackageUrl());
 						jgen.writeStringField("file", dpfk.foreignClass().getSimpleName());
 						jgen.writeStringField("id", dpfk.keyField());
