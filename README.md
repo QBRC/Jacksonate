@@ -17,8 +17,9 @@ a ``TableJSONContainer`` class that can be used as a wrapper when you desire JSO
 
 The Guiberest project (https://github.com/QBRC/Guiberest) includes a complete example of a RESTful Web Service using RESTEasy and Jacksonate to output Hibernate persistence objects in the JSON Table Schema format.
 
-Example RESTful Web Service Method that outputs a list of objects in the JSON Table Schema format:
+Example:
 -----------
+RESTful Web Service Method that outputs a list of objects in the JSON Table Schema format:
 ```java
 public TableJSONContainer<User> getUsers() {
 	try {
