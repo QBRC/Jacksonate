@@ -61,7 +61,29 @@ Output:
 
 Data Package
 -----------------
+The Jacksonate library also includes a ``DataPackage`` class, along with both a custom serializer and deserializer, to enable
+easy output of a "datapackage.json" JSON object that implements the dataprotocols "Data Package" specification.  
 
+Simply annotate the classes that should be inclucded in your datapackage.json as follows:
+```java
+@DataPackageClass(url="user")
+```
+
+Then, include a RESTful method that returns a ``Datapackage`` object:
+```java
+public DataPackage getDataPackage() {
+	return new DataPackage();
+}
+```
+
+Foreign Key Support
+----------------
+Both the DataPackage serializer and the TableJSONContainer serializer support foreign keys as mentioned in the dataprotocols specifictions.
+
+Annotate your domain object properties that reference foreign keys as follows:
+```java
+@DataPackageForeignKey(foreignClass = Dataset.class)
+```
 
 
 Getting Started
