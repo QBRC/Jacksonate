@@ -12,7 +12,7 @@ defined by the dataprotocols project at https://github.com/dataprotocols/.
 
 JSON Table Schema
 -----------------
-Jacksonate provides serializers and deserializers for writing and reading JSON data in the JSON Table Schema.  It includes
+Jacksonate provides serializers and deserializers for writing and reading JSON data in the JSON Table Schema format.  It includes
 a ``TableJSONContainer`` class that can be used as a wrapper when you desire JSON output that meets the JSON Table Schema specifications:
 
 The Guiberest project (https://github.com/QBRC/Guiberest) includes a complete example of a RESTful Web Service using RESTEasy and Jacksonate to output Hibernate persistence objects in the JSON Table Schema format.
