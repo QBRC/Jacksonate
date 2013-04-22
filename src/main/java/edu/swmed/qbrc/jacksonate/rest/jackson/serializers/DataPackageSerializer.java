@@ -7,7 +7,6 @@ import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.map.JsonSerializer;
 import org.codehaus.jackson.map.SerializerProvider;
 import org.reflections.Reflections;
-
 import edu.swmed.qbrc.jacksonate.rest.datapackage.DataPackage;
 import edu.swmed.qbrc.jacksonate.rest.datapackage.DataPackage.DataPackageClass;
 import edu.swmed.qbrc.jacksonate.rest.jackson.JacksonUtils;
@@ -32,6 +31,9 @@ public class DataPackageSerializer extends JsonSerializer<DataPackage> {
 		Set<Class<?>> classes = reflections.getTypesAnnotatedWith(DataPackageClass.class);
 		
 		jgen.writeStartObject();
+		jgen.writeStringField("name", dataPackage.getName());
+		jgen.writeStringField("title", dataPackage.getTitle());
+		jgen.writeStringField("description", dataPackage.getDescription());
 		jgen.writeArrayFieldStart("resources");
 		for (Class<?> annotated : classes) {
 			DataPackageClass dp = annotated.getAnnotation(DataPackageClass.class);
