@@ -62,15 +62,12 @@ public class TableRowDeserializer<T> extends JsonDeserializer<T> {
 	private Object getNodeValue(Class<?> propertyType, JsonNode node) {
 		if (propertyType.equals(String.class))
 			return node.getTextValue();
-		else if (propertyType.equals(Integer.class))
+		else if (propertyType.equals(Integer.class) && node.isNumber() && !node.isNull())
 			return node.getIntValue();
 		else if (propertyType.equals(Short.class) && node.isNumber() && !node.isNull())
 			return node.getNumberValue().shortValue();
-		else if (propertyType.equals(Boolean.class))
-			if (node.isBoolean() && !node.isNull())
-				return node.getBooleanValue();
-			else
-				return new Boolean(false);
+		else if (propertyType.equals(Boolean.class) && node.isBoolean() && !node.isNull())
+			return node.getBooleanValue();
 		else if (propertyType.equals(Float.class) && node.isNumber() && ! node.isNull())
 			return (float)node.getNumberValue().doubleValue();
 		else if (propertyType.equals(Double.class) && node.isNumber() && ! node.isNull())
