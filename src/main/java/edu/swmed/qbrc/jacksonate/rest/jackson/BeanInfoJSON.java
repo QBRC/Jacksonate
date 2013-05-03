@@ -3,6 +3,7 @@ package edu.swmed.qbrc.jacksonate.rest.jackson;
 import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Transient;
@@ -109,6 +110,10 @@ public class BeanInfoJSON {
 		else if (propertyType.equals(Double.class)) {
 			bp.setWriter(new DoubleWriter());
 			return "number";
+		}
+		else if (propertyType.equals(BigInteger.class)) {
+			bp.setWriter(new BigIntegerWriter());
+			return "integer";
 		}
 		else {
 			bp.setWriter(new ObjectWriter());

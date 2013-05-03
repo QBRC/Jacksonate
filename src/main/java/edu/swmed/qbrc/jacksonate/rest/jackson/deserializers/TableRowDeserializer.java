@@ -2,6 +2,8 @@ package edu.swmed.qbrc.jacksonate.rest.jackson.deserializers;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.math.BigInteger;
+
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.JsonProcessingException;
@@ -75,6 +77,8 @@ public class TableRowDeserializer<T> extends JsonDeserializer<T> {
 			return (float)node.getNumberValue().doubleValue();
 		else if (propertyType.equals(Double.class) && node.isNumber() && ! node.isNull())
 			return node.getNumberValue().doubleValue();
+		else if (propertyType.equals(BigInteger.class) && node.isNumber() && ! node.isNull())
+			return BigInteger.valueOf(node.getNumberValue().longValue());
 		
 		return null;
 	}
