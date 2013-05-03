@@ -7,12 +7,19 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 public class TableJSONContainer<T> {
 	
 	private List<T> data;
+	private Class<?> clazz;
 	
-	public TableJSONContainer() {
+	public TableJSONContainer(Class<?> clazz) {
+		this.clazz = clazz;
 	}
 	
-	public TableJSONContainer(List<T> data) {
+	public TableJSONContainer(Class<?> clazz, List<T> data) {
+		this.clazz = clazz;
 		this.data = data;
+	}
+	
+	public Class<?> getListClass() {
+		return clazz;
 	}
 	
 	public List<T> getData() {

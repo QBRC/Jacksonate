@@ -34,6 +34,7 @@ public class TableJSONContainerDeserializer extends JsonDeserializer<TableJSONCo
 		
 		List<Object> list = null;
 		TypeReference typeRef = null;
+		Class<?> classRef = null;
 		
 		Iterator<Entry<String, JsonNode>> elementsIterator = root.getFields();
 		while (elementsIterator.hasNext()) {
@@ -42,7 +43,7 @@ public class TableJSONContainerDeserializer extends JsonDeserializer<TableJSONCo
 			
 			if (name.equals("java_type")) {
 				try {
-					Class<?> classRef = Class.forName((String)mapper.readValue(element.getValue(), String.class));
+					classRef = Class.forName((String)mapper.readValue(element.getValue(), String.class));
 					typeRef = typeRefs.get(classRef);
 				} catch (ClassNotFoundException e) {
 					// Do nothing
@@ -54,7 +55,7 @@ public class TableJSONContainerDeserializer extends JsonDeserializer<TableJSONCo
 			}
 		}
 		
-		TableJSONContainer tc = new TableJSONContainer(list);
+		TableJSONContainer tc = new TableJSONContainer(classRef, list);
 		return tc;
 	}
 	
