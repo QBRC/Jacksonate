@@ -101,3 +101,8 @@ Compile the Jacksonate library
 cd Jacksonate/
 mvn clean install  
 ```
+
+License
+-------
+
+All code is licensed under the MIT License.
